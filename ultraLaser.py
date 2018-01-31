@@ -7,7 +7,6 @@ LedPin = 11
 GPIO.setmode(GPIO.BOARD)
 GPIO.setup(TRIG, GPIO.OUT)
 GPIO.setup(ECHO, GPIO.IN)
-ultraClean = False
 
 def setup():
     	GPIO.setmode(GPIO.BOARD)
@@ -32,18 +31,18 @@ def distance():
 		time2 = time.time()
 	during = time2 - time1
 	during = during * 340 / 2 * 100
-	if during >2 and during <4:
-		ultraClean = True
-		GPIO.cleanup()
+	if during <10:
+		print '...led on'
+		GPIO.output(LedPin, GPIO.LOW)  # led on
+		time.sleep(0.5)
 	return during
     
 def loop():
-    while True:
-        if not ultraClean:
-            dis = distance()
-            print dis, 'cm'
-            print ''
-        time.sleep(0.3)
+	while True:
+		dis = distance()
+	    	print dis, 'cm'
+	    	print ''
+        	time.sleep(0.3)
         
 def destroy():
 	GPIO.cleanup()
