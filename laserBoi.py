@@ -13,7 +13,6 @@ def setup():
 def loop():
 	while True:
 		print '...led on'
-		GPIO.output(LedPin, GPIO.HIGH)  # led on
 
 def destroy():
 	GPIO.output(LedPin, GPIO.LOW)     # led off
