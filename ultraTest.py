@@ -1,6 +1,8 @@
 #!/usr/bin/env python
 import RPi.GPIO as GPIO
 GPIO.setmode(GPIO.BOARD)
+GPIO.setup(TRIG, GPIO.OUT)
+GPIO.setup(ECHO, GPIO.IN)
 import time
 TRIG = 11
 ECHO = 12
