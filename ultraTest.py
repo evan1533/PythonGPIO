@@ -35,7 +35,7 @@ def distance():
     
 def loop():
     while True:
-        if !ultraClean:
+        if not ultraClean:
             dis = distance()
             print dis, 'cm'
             print ''
