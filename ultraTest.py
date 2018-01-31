@@ -3,8 +3,7 @@ import RPi.GPIO as GPIO
 import time
 TRIG = 11
 ECHO = 12
-time1 = 0
-time2 = 0
+
 def setup():
     GPIO.setmode(GPIO.BOARD)
     GPIO.setup(TRIG, GPIO.OUT)
@@ -15,6 +14,8 @@ def distance():
     GPIO.output(TRIG, 1)
     time.sleep(0.00001)
     GPIO.output(TRIG, 0)
+    time1 = 0
+    time2 = 0
     while GPIO.input(ECHO) == 0:
         a = 0
         time1 = time.time()
