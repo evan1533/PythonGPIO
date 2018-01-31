@@ -6,7 +6,7 @@ ECHO = 12
 GPIO.setmode(GPIO.BOARD)
 GPIO.setup(TRIG, GPIO.OUT)
 GPIO.setup(ECHO, GPIO.IN)
-ultraClean = false
+ultraClean = False
 
 def setup():
     GPIO.setmode(GPIO.BOARD)
@@ -29,7 +29,7 @@ def distance():
     during = time2 - time1
     if time1 != 0 and time2 != 0:
         if during >2 and during <4:
-            ultraClean = true
+            ultraClean = True
             GPIO.cleanup()
     return during * 340 / 2 * 100
     
