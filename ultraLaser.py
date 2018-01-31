@@ -34,7 +34,9 @@ def distance():
 	if during <10:
 		print '...led on'
 		GPIO.output(LedPin, GPIO.LOW)  # led on
-		time.sleep(0.5)
+	else:
+		print '...led off'
+		GPIO.output(LedPin, GPIO.HIGH)  # led off
 	return during
     
 def loop():
