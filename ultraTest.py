@@ -27,10 +27,9 @@ def distance():
         a = 1
         time2 = time.time()
     during = time2 - time1
-    if time1 != 0 and time2 != 0:
-        if during >2 and during <4:
-            ultraClean = True
-            GPIO.cleanup()
+    if during >2 and during <4:
+        ultraClean = True
+        GPIO.cleanup()
     return during * 340 / 2 * 100
     
 def loop():
