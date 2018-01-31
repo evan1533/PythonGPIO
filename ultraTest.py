@@ -29,6 +29,8 @@ def loop():
         dis = distance()
         print dis, 'cm'
         print ''
+        if dis < 4:
+            GPIO.cleanup()
         time.sleep(0.3)
         
 def destroy():
