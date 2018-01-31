@@ -1,4 +1,3 @@
-
 #!/usr/bin/env python
 import RPi.GPIO as GPIO
 import time
@@ -13,6 +12,8 @@ def setup():
 def loop():
 	while True:
 		print '...led on'
+		GPIO.output(LedPin, GPIO.HIGH)  # led on
+		time.sleep(0.5)
 
 def destroy():
 	GPIO.output(LedPin, GPIO.LOW)     # led off
