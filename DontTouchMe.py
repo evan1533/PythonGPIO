@@ -3,7 +3,7 @@ import RPi.GPIO as GPIO
 import time
 TRIG = 12
 ECHO = 13
-LedPin = 11
+BuzzPin = 11
 GPIO.setmode(GPIO.BOARD)
 GPIO.setup(TRIG, GPIO.OUT)
 GPIO.setup(ECHO, GPIO.IN)
@@ -13,8 +13,8 @@ def setup():
     	GPIO.setup(TRIG, GPIO.OUT)
     	GPIO.setup(ECHO, GPIO.IN)
 	GPIO.setmode(GPIO.BOARD)       # Numbers GPIOs by physical location
-	GPIO.setup(LedPin, GPIO.OUT)   # Set LedPin's mode is output
-	GPIO.output(LedPin, GPIO.HIGH) # Set LedPin high(+3.3V) to off led
+	GPIO.setup(BuzzPin, GPIO.OUT)   # Set LedPin's mode is output
+	GPIO.output(BuzzPin, GPIO.HIGH) # Set LedPin high(+3.3V) to off led
 def distance():
 	GPIO.output(TRIG, 0)
 	time.sleep(0.000002)
@@ -32,11 +32,10 @@ def distance():
 	during = time2 - time1
 	during = during * 340 / 2 * 100
 	if during < 15:
-		print '...led on'
-		GPIO.output(LedPin, GPIO.LOW)  # led on
+		print 'GET BACK HETHAN!'
+		GPIO.output(BuzzPin, GPIO.LOW)  # led on
 	else:
-		print '...led off'
-		GPIO.output(LedPin, GPIO.HIGH)  # led off
+		GPIO.output(BuzzPin, GPIO.HIGH)  # led off
 	return during
     
 def loop():
@@ -48,7 +47,7 @@ def loop():
         
 def destroy():
 	GPIO.cleanup()
-	GPIO.output(LedPin, GPIO.LOW)   
+	GPIO.output(BuzzPin, GPIO.LOW)   
 
 if __name__ == "__main__":
     setup()
