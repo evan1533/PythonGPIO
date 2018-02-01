@@ -7,15 +7,17 @@ BuzzPin = 11
 GPIO.setmode(GPIO.BOARD)
 GPIO.setup(TRIG, GPIO.OUT)
 GPIO.setup(ECHO, GPIO.IN)
-GPIO.setup(BuzzPin, GPIO.OUT)
-global Buzz						# Assign a global variable to replace GPIO.PWM 
-Buzz = GPIO.PWM(BuzzPin, 440)	# 440 is initial frequency.
+	# 440 is initial frequency.
 
 
 def setup():
     	GPIO.setmode(GPIO.BOARD)
     	GPIO.setup(TRIG, GPIO.OUT)
     	GPIO.setup(ECHO, GPIO.IN)
+	GPIO.setup(BuzzPin, GPIO.OUT)	# Set pins' mode is output
+	global Buzz						# Assign a global variable to replace GPIO.PWM 
+	Buzz = GPIO.PWM(BuzzPin, 440)	# 440 is initial frequency.
+	Buzz.start(50)
 def distance():
 	GPIO.output(TRIG, 0)
 	time.sleep(0.000002)
@@ -34,7 +36,7 @@ def distance():
 	during = during * 340 / 2 * 100
 	if during < 15:
 		print 'GET BACK HETHAN!'
-		Buzz.start(100)
+		Buzz.start(50)
 	else:
 		GPIO.output(BuzzPin, GPIO.HIGH)  # led off
 		Buzz.stop()
