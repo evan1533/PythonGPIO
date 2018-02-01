@@ -24,7 +24,7 @@ def read():
 	temperaturedata = secondline.split(" ")[9]
 	temperature = float(temperaturedata[2:])
 	temperature = temperature / 1000
-	return temperature
+	return temperature * (9/5) + 32
 	
 def loop():
 	while True:
