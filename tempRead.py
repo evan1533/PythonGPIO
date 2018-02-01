@@ -29,7 +29,7 @@ def read():
 def loop():
 	while True:
 		if read() != None:
-			print "Current temperature : %0.3f C" % read()
+			print "Current temperature : %0.4f F" % read()
 
 def destroy():
 	pass
