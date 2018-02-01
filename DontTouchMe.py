@@ -7,6 +7,9 @@ BuzzPin = 11
 GPIO.setmode(GPIO.BOARD)
 GPIO.setup(TRIG, GPIO.OUT)
 GPIO.setup(ECHO, GPIO.IN)
+global Buzz						# Assign a global variable to replace GPIO.PWM 
+Buzz = GPIO.PWM(Buzzer, 440)	# 440 is initial frequency.
+
 
 def setup():
     	GPIO.setmode(GPIO.BOARD)
@@ -33,9 +36,10 @@ def distance():
 	during = during * 340 / 2 * 100
 	if during < 15:
 		print 'GET BACK HETHAN!'
-		GPIO.output(BuzzPin, GPIO.LOW)  # led on
+		Buzz.start(100)
 	else:
 		GPIO.output(BuzzPin, GPIO.HIGH)  # led off
+		Buzz.stop()
 	return during
     
 def loop():
@@ -46,8 +50,9 @@ def loop():
         	time.sleep(0.3)
         
 def destroy():
-	GPIO.cleanup()
-	GPIO.output(BuzzPin, GPIO.LOW)   
+	Buzz.stop()					# Stop the buzzer
+	GPIO.output(Buzzer, 1)		# Set Buzzer pin to High
+	GPIO.cleanup()	
 
 if __name__ == "__main__":
     setup()
