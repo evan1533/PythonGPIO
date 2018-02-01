@@ -8,7 +8,7 @@ GPIO.setmode(GPIO.BOARD)
 GPIO.setup(TRIG, GPIO.OUT)
 GPIO.setup(ECHO, GPIO.IN)
 global Buzz						# Assign a global variable to replace GPIO.PWM 
-Buzz = GPIO.PWM(Buzzer, 440)	# 440 is initial frequency.
+Buzz = GPIO.PWM(BuzzPin, 440)	# 440 is initial frequency.
 
 
 def setup():
