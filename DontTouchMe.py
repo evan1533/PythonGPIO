@@ -34,7 +34,7 @@ def distance():
 		time2 = time.time()
 	during = time2 - time1
 	during = during * 340 / 2 * 100
-	if during < 15:
+	if during < 45:
 		print 'GET BACK HETHAN!'
 		Buzz.start(50)
 	else:
