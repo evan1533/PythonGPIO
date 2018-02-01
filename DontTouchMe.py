@@ -15,6 +15,7 @@ def setup():
     	GPIO.setmode(GPIO.BOARD)
     	GPIO.setup(TRIG, GPIO.OUT)
     	GPIO.setup(ECHO, GPIO.IN)
+	GPIO.setup(BuzzPin, GPIO.OUT)
 	GPIO.setmode(GPIO.BOARD)       # Numbers GPIOs by physical location
 def distance():
 	GPIO.output(TRIG, 0)
