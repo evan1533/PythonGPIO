@@ -16,8 +16,6 @@ def setup():
     	GPIO.setup(TRIG, GPIO.OUT)
     	GPIO.setup(ECHO, GPIO.IN)
 	GPIO.setmode(GPIO.BOARD)       # Numbers GPIOs by physical location
-	GPIO.setup(BuzzPin, GPIO.OUT)   # Set LedPin's mode is output
-	GPIO.output(BuzzPin, GPIO.HIGH) # Set LedPin high(+3.3V) to off led
 def distance():
 	GPIO.output(TRIG, 0)
 	time.sleep(0.000002)
