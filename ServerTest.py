@@ -22,7 +22,7 @@ while True:
         # Receive the data in small chunks and retransmit it
         while True:
             data = connection.recv(16)
-            print('received {!r}'.format(data))
+            print(int(data))
 
     finally:
         # Clean up the connection

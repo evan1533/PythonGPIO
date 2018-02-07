@@ -37,7 +37,7 @@ sock.connect(server_address)
 
 def sendPlayMessage(mess):
         # Send data
-        print('sending {!r}'.format(mess))
+        # print('sending {!r}'.format(mess))
         sock.send(mess)
 
 
