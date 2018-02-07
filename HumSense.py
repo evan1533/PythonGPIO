@@ -12,7 +12,7 @@ def loop():
 	status = 1
 	while True:
 		tmp = GPIO.input(DO);
-    print tmp
+		print tmp
 		
 		time.sleep(0.2)
 
