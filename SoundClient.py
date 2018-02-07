@@ -14,8 +14,9 @@ def setup():
   
 def loop():
         playSound = 0;
-        print("ARMING IN 10 SECONDS");
-        time.sleep(10)
+        sec = 5;
+        print("ARMING IN "+str(sec)+" SECONDS");
+        time.sleep(sec)
         GPIO.setmode(GPIO.BCM)
         GPIO.setup(MS, GPIO.IN)
         print("ARMED");
