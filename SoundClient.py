@@ -23,7 +23,7 @@ def loop():
 		# print(tmp,playSound);
 		if playSound != GPIO.input(MS):
                     playSound = GPIO.input(MS);
-                    sendPlayMessage(b''+str(playSound));
+                    sendPlayMessage(b''+str(GPIO.input(MS)));
 		time.sleep(0.1)
 
 
