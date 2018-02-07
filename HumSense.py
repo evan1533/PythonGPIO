@@ -11,7 +11,7 @@ def setup():
 def loop():
 	status = 1
 	while True:
-		tmp = GPIO.input(DO);
+		tmp = GPIO.input(MS);
 		print tmp
 		
 		time.sleep(0.2)
