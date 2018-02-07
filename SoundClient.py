@@ -16,10 +16,12 @@ def setup():
   
 def loop():
         playSound = 0;
+        print("ARMING IN 10 SECONDS");
         time.sleep(10)
+        print("ARMED");
 	while True:
 		tmp = GPIO.input(MS);
-		# print(tmp,playSound);
+		print(tmp,playSound);
 		if tmp != playSound:
                     playSound = tmp;
                     sendPlayMessage(b''+str(playSound));
