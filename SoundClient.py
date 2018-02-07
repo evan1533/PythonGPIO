@@ -16,6 +16,7 @@ def setup():
   
 def loop():
         playSound = 0;
+        time.sleep(10)
 	while True:
 		tmp = GPIO.input(MS);
 		# print(tmp,playSound);
