@@ -42,7 +42,7 @@ def sendPlayMessage(mess):
 
         # Look for the response
         amount_received = 0
-        amount_expected = len(message)
+        amount_expected = len(mess)
 
         while True:
             data = sock.recv(16)
