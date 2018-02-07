@@ -7,7 +7,6 @@ import socket
 import sys
 
 MS = 17
-GPIO.setmode(GPIO.BCM)
 
 def setup():
 	playSound = 0;
@@ -17,6 +16,7 @@ def loop():
         playSound = 0;
         print("ARMING IN 10 SECONDS");
         time.sleep(10)
+        GPIO.setmode(GPIO.BCM)
         GPIO.setup(MS, GPIO.IN)
         print("ARMED");
 	while True:
