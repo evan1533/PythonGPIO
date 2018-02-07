@@ -20,10 +20,9 @@ def loop():
         time.sleep(10)
         print("ARMED");
 	while True:
-		tmp = GPIO.input(MS);
 		# print(tmp,playSound);
-		if tmp != playSound:
-                    playSound = tmp;
+		if playSound != GPIO.input(MS):
+                    playSound = GPIO.input(MS);
                     sendPlayMessage(b''+str(playSound));
 		time.sleep(0.1)
 
