@@ -8,10 +8,7 @@ import sys
 
 MS = 17
 GPIO.setmode(GPIO.BCM)
-player = pyglet.media.Player();
-neva = pyglet.media.load('NeverGonnaGiveYouUp.wav');
-player.queue(neva);
-playSound = 0;
+
 def setup():
 	GPIO.setup(MS, GPIO.IN)
 	playSound = 0;
