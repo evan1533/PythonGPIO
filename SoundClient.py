@@ -21,6 +21,7 @@ def loop():
         print("ARMED");
         while GPIO.input(MS) == 1:
                 print("Waiting for sensor");
+        print("READY");
 	while True:
 		# print(tmp,playSound);
 		if playSound != GPIO.input(MS):
