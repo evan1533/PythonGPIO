@@ -23,7 +23,6 @@ def loop():
 		if tmp != playSound:
                     playSound = tmp;
                     sendPlayMessage(b''+str(playSound));
-		time.sleep(0.2)
 
 
 # Create a TCP/IP socket
