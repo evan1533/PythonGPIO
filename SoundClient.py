@@ -35,9 +35,7 @@ server_address = ('172.24.66.145', 10000)
 print('connecting to {} port {}'.format(*server_address))
 sock.connect(server_address)
 
-def sendPlayMessage(mess):      
-    try:
-
+def sendPlayMessage(mess):
         # Send data
         print('sending {!r}'.format(mess))
         sock.send(mess)
