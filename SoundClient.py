@@ -40,15 +40,6 @@ def sendPlayMessage(mess):
         print('sending {!r}'.format(mess))
         sock.send(mess)
 
-        # Look for the response
-        amount_received = 0
-        amount_expected = len(mess)
-
-        while True:
-            data = sock.recv(16)
-            amount_received += len(data)
-            print('received {!r}'.format(data))
-
 
 
 if __name__ == '__main__':
