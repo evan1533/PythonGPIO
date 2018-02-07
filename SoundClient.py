@@ -19,7 +19,7 @@ def setup():
 def loop():
 	while True:
 		tmp = GPIO.input(MS);
-		print('%d %d',tmp,playsound);
+		print('%d %d',tmp,playSound);
 		if tmp != playSound:
                     playSound = tmp;
                     sendPlayMessage(b''+str(playSound));
