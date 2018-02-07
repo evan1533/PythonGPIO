@@ -21,7 +21,7 @@ def loop():
         playSound = 0;
 	while True:
 		tmp = GPIO.input(MS);
-		print('%d %d',tmp,playSound);
+		print(tmp,playSound);
 		if tmp != playSound:
                     playSound = tmp;
                     sendPlayMessage(b''+str(playSound));
@@ -51,15 +51,14 @@ def sendPlayMessage(mess):
             amount_received += len(data)
             print('received {!r}'.format(data))
 
-    finally:
-        print('closing socket')
-        sock.close()
 
 
 if __name__ == '__main__':
 	try:
 		setup()
 		loop()
-	except KeyboardInterrupt: 
+	except KeyboardInterrupt:
+                print('closing socket')
+                sock.close()
 		pass	
 
