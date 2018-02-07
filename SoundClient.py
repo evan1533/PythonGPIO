@@ -21,7 +21,7 @@ def loop():
         playSound = 0;
 	while True:
 		tmp = GPIO.input(MS);
-		print(tmp,playSound);
+		# print(tmp,playSound);
 		if tmp != playSound:
                     playSound = tmp;
                     sendPlayMessage(b''+str(playSound));
@@ -37,7 +37,7 @@ sock.connect(server_address)
 
 def sendPlayMessage(mess):
         # Send data
-        # print('sending {!r}'.format(mess))
+        print('sending {!r}'.format(mess))
         sock.send(mess)
 
 
