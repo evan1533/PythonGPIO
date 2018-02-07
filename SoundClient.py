@@ -14,9 +14,11 @@ player.queue(neva);
 playSound = 0;
 def setup():
 	GPIO.setup(MS, GPIO.IN)
+	playSound = 0;
 	
   
 def loop():
+        playSound = 0;
 	while True:
 		tmp = GPIO.input(MS);
 		print('%d %d',tmp,playSound);
