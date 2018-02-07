@@ -21,7 +21,7 @@ def loop():
         print("ARMED");
 	while True:
 		tmp = GPIO.input(MS);
-		print(tmp,playSound);
+		# print(tmp,playSound);
 		if tmp != playSound:
                     playSound = tmp;
                     sendPlayMessage(b''+str(playSound));
