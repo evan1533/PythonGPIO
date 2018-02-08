@@ -20,8 +20,8 @@ def loop():
         GPIO.setmode(GPIO.BCM)
         GPIO.setup(MS, GPIO.IN)
         print("ARMED");
-        while GPIO.input(MS) == 1:
-                print("Waiting for sensor");
+        #while GPIO.input(MS) == 1:
+         #       print("Waiting for sensor");
         print("READY");
 	while True:
 		# print(tmp,playSound);
