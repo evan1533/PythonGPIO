@@ -106,7 +106,6 @@ def btnISR(channel):
 	elif(write_color[2]):
 		write_color[2] = False
 		write_color[0] = True	
-	globalCounter = 0
 
 def loop():
 	global globalCounter
@@ -119,7 +118,6 @@ def loop():
 	while True:
 		rotaryDeal()
 		if tmp != globalCounter:
-			print 'globalCounter = %d' % globalCounter
 			tmp = globalCounter
 			print("\n",r_val, g_val, b_val)
 			setColor(rgb2hex((r_val,g_val,b_val)))
