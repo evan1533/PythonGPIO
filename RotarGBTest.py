@@ -14,6 +14,9 @@ r_val = 0
 g_val = 0
 b_val = 0
 
+rgb_x = 5
+write_color = (True, False, False)
+
 globalCounter = 0
 
 flag = 0
@@ -55,6 +58,8 @@ def rotaryDeal():
 	global r_val
 	global g_val
 	global b_val
+	global rgb_x
+	global write_color
 	Last_RoB_Status = GPIO.input(RoBPin)
 	while(not GPIO.input(RoAPin)):
 		Current_RoB_Status = GPIO.input(RoBPin)
@@ -63,12 +68,12 @@ def rotaryDeal():
 		flag = 0
 		if (Last_RoB_Status == 0) and (Current_RoB_Status == 1):
 			globalCounter = globalCounter + 1
-			if(r_val+1<=255):
-				r_val = r_val + 1;
-			elif(g_val+1<=255):
-				g_val = g_val + 1;
-			elif(b_val+1<=255):
-				b_val = b_val + 1;
+			if(r_val+rgb_x<=255 and write_color[0]):
+				r_val = r_val + rgb_x;
+			if(g_val+rgb_x<=255 and write_color[1]):
+				g_val = g_val + rgb_x;
+			if(b_val+rgb_x<=255 and write_color[2]):
+				b_val = b_val + rgb_x;
 		if (Last_RoB_Status == 1) and (Current_RoB_Status == 0):
 			globalCounter = globalCounter - 1
 			
@@ -87,7 +92,17 @@ def setColor(col):   # For example : col = 0x112233
 	p_B.ChangeDutyCycle(100-B_val)
 	
 def btnISR(channel):
+	global write_color
 	global globalCounter
+	if(write_color[0]):
+		write_color[0] = False
+		write_color[1] = True
+	elif(write_color[1]):
+		write_color[1] = False
+		write_color[2] = True
+	elif(write_color[2]):
+		write_color[2] = False
+		write_color[0] = True	
 	globalCounter = 0
 
 def loop():
