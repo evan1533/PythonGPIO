@@ -10,9 +10,9 @@ R = 15
 G = 16
 B = 18
 
-r_val = 0
-g_val = 0
-b_val = 0
+global r_val = 0
+global g_val = 0
+global b_val = 0
 
 globalCounter = 0
 
@@ -25,9 +25,6 @@ def rgb2hex(r,g,b):
     return hex
 
 def setup(Rpin, Gpin, Bpin):
-	r_val = 0
-	g_val = 0
-	b_val = 0
 	
 	GPIO.setmode(GPIO.BOARD)       # Numbers GPIOs by physical location
 	GPIO.setup(RoAPin, GPIO.IN)    # input mode
