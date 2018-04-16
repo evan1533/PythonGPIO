@@ -62,6 +62,7 @@ def rotaryDeal():
 	if flag == 1:
 		flag = 0
 		if (Last_RoB_Status == 0) and (Current_RoB_Status == 1):
+			globalCounter = globalCounter + 1
 			if(r_val+1<=255):
 				r_val = r_val + 1;
 			elif(g_val+1<=255):
