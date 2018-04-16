@@ -21,7 +21,7 @@ Last_RoB_Status = 0
 Current_RoB_Status = 0
 
 def rgb2hex( list ):
-   rgb = ((list[0]&0x0ff)<<16)|((list[1]&0x0ff)<<8)|(list[2]&0x0ff);
+   rgb = ((list[0]&0x0FF)<<16)|((list[1]&0x0FF)<<8)|(list[2]&0x0FF);
    return hex(rgb)
 
 def setup(Rpin, Gpin, Bpin):
@@ -73,7 +73,7 @@ def rotaryDeal():
 			globalCounter = globalCounter - 1
 			
 def setColor(col):   # For example : col = 0x112233
-	print(col.encode('hex'))
+	print(col)
 	R_val = (col & 0xff0000) >> 16
 	G_val = (col & 0x00ff00) >> 8
 	B_val = (col & 0x0000ff) >> 0
@@ -103,7 +103,7 @@ def loop():
 		if tmp != globalCounter:
 			print 'globalCounter = %d' % globalCounter
 			tmp = globalCounter
-			print(r_val," ", g_val," ", b_val)
+			print(r_val, g_val, b_val)
 			setColor(rgb2hex((r_val,g_val,b_val)))
 
 def off():
