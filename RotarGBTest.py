@@ -63,7 +63,8 @@ def rotaryDeal():
 			elif(g_val+1<=255):
 				g_val = g_val + 1;
 			elif(b_val+1<=255):
-				b_val = b_val + 1;
+				b_val = b_val + 1;.
+			print(r, g, b)
 			setColor(rgb2hex(r_val,g_val,b_val))
 		if (Last_RoB_Status == 1) and (Current_RoB_Status == 0):
 			globalCounter = globalCounter - 1
