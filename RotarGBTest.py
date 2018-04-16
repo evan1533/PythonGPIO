@@ -10,9 +10,9 @@ R = 15
 G = 16
 B = 18
 
-global r_val = 0
-global g_val = 0
-global b_val = 0
+r_val = 0
+g_val = 0
+b_val = 0
 
 globalCounter = 0
 
@@ -52,6 +52,9 @@ def rotaryDeal():
 	global Last_RoB_Status
 	global Current_RoB_Status
 	global globalCounter
+	global r_val
+	global g_val
+	global b_val
 	Last_RoB_Status = GPIO.input(RoBPin)
 	while(not GPIO.input(RoAPin)):
 		Current_RoB_Status = GPIO.input(RoBPin)
@@ -88,6 +91,9 @@ def btnISR(channel):
 
 def loop():
 	global globalCounter
+	global r_val
+	global g_val
+	global b_val
 	tmp = 0	# Rotary Temperary
 
 	GPIO.add_event_detect(BtnPin, GPIO.FALLING, callback=btnISR)
