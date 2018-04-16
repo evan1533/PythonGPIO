@@ -6,16 +6,23 @@ RoAPin = 11    # CLK Pin
 RoBPin = 12    # DT Pin
 BtnPin = 13    # Button Pin
 
-colors = [0xFF0000, 0x00FF00, 0x0000FF, 0xFFFF00, 0xFF00FF, 0x00FFFF]
 R = 11
 G = 12
 B = 18
+
+r_val = 0
+g_val = 0
+b_val = 0
 
 globalCounter = 0
 
 flag = 0
 Last_RoB_Status = 0
 Current_RoB_Status = 0
+
+def rgb2hex(r,g,b):
+    hex = "#{:02x}{:02x}{:02x}".format(r,g,b)
+    return hex
 
 def setup(Rpin, Gpin, Bpin):
 	GPIO.setmode(GPIO.BOARD)       # Numbers GPIOs by physical location
@@ -51,7 +58,12 @@ def rotaryDeal():
 	if flag == 1:
 		flag = 0
 		if (Last_RoB_Status == 0) and (Current_RoB_Status == 1):
-			globalCounter = globalCounter + 1
+			if(r_val+1<=255):
+				r_val = r_val + 1;
+			elif(g_val+1<=255):
+				g_val = g_val + 1;
+			elif(b_val+1<=255):
+				b_val = b_val + 1;
 		if (Last_RoB_Status == 1) and (Current_RoB_Status == 0):
 			globalCounter = globalCounter - 1
 			
