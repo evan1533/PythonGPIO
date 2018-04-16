@@ -6,8 +6,8 @@ RoAPin = 11    # CLK Pin
 RoBPin = 12    # DT Pin
 BtnPin = 13    # Button Pin
 
-R = 11
-G = 12
+R = 15
+G = 16
 B = 18
 
 r_val = 0
@@ -64,6 +64,7 @@ def rotaryDeal():
 				g_val = g_val + 1;
 			elif(b_val+1<=255):
 				b_val = b_val + 1;
+			setColor(rgb2hex(r_val,g_val,b_val))
 		if (Last_RoB_Status == 1) and (Current_RoB_Status == 0):
 			globalCounter = globalCounter - 1
 			
@@ -105,13 +106,6 @@ def destroy():
 	p_B.stop()
 	off()
 	GPIO.cleanup()             # Release resource
-
-if __name__ == '__main__':     # Program start from here
-	setup()
-	try:
-		loop()
-	except KeyboardInterrupt:  # When 'Ctrl+C' is pressed, the child program destroy() will be  executed.
-		destroy()
 
 
 
