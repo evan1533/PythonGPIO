@@ -68,15 +68,15 @@ def rotaryDeal():
 		flag = 0
 		if (Last_RoB_Status == 0) and (Current_RoB_Status == 1):
 			globalCounter = globalCounter + 1
-			if(r_val+rgb_x<=255 and write_color[0]):
+			if(write_color[0]):
 				print("Editing Red")
-				r_val = r_val + rgb_x;
-			if(g_val+rgb_x<=255 and write_color[1]):
+				r_val = (r_val + rgb_x) % 256;
+			if(write_color[1]):
 				print("Editing Green")
-				g_val = g_val + rgb_x;
-			if(b_val+rgb_x<=255 and write_color[2]):
+				g_val = (g_val + rgb_x) % 256;;
+			if(write_color[2]):
 				print("Editing Blue")
-				b_val = b_val + rgb_x;
+				b_val = (b_val + rgb_x) % 256;
 		if (Last_RoB_Status == 1) and (Current_RoB_Status == 0):
 			globalCounter = globalCounter - 1
 			
