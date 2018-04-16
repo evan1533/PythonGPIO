@@ -72,7 +72,7 @@ def rotaryDeal():
 			globalCounter = globalCounter - 1
 			
 def setColor(col):   # For example : col = 0x112233
-	print(col)
+	print(col.encode('hex'))
 	R_val = (col & 0xff0000) >> 16
 	G_val = (col & 0x00ff00) >> 8
 	B_val = (col & 0x0000ff) >> 0
