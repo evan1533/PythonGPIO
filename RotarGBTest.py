@@ -102,7 +102,7 @@ def loop():
 			print 'globalCounter = %d' % globalCounter
 			tmp = globalCounter
 			print(r_val, g_val, b_val)
-			setColor(rgb2hex(r_val,g_val,b_val))
+			setColor(rgb2hex0((r_val,g_val,b_val)))
 
 def off():
 	for i in pins:
