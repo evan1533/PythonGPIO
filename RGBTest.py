@@ -3,9 +3,9 @@ import RPi.GPIO as GPIO
 import time
 
 colors = [0xFF0000, 0x00FF00, 0x0000FF, 0xFFFF00, 0xFF00FF, 0x00FFFF]
-R = 17
-G = 18
-B = 24
+R = 0
+G = 1
+B = 5
 
 def setup(Rpin, Gpin, Bpin):
 	global pins
