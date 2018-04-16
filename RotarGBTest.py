@@ -20,8 +20,9 @@ flag = 0
 Last_RoB_Status = 0
 Current_RoB_Status = 0
 
-def rgb2hex(rgb):
-	return '0x%02x%02x%02x' % rgb
+def rgb2hex( list ):
+   rgb = ((list[0]&0x0ff)<<16)|((list[1]&0x0ff)<<8)|(list[2]&0x0ff);
+   return hex(rgb)
 
 def setup(Rpin, Gpin, Bpin):
 	
