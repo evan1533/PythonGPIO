@@ -15,7 +15,7 @@ g_val = 0
 b_val = 0
 
 rgb_x = 5
-write_color = (True, False, False)
+write_color = [True, False, False]
 
 globalCounter = 0
 
