@@ -21,7 +21,7 @@ Last_RoB_Status = 0
 Current_RoB_Status = 0
 
 def rgb2hex(rgb):
-	return 0x+ ('%02x%02x%02x' % rgb)
+	return '0x%02x%02x%02x' % rgb
 
 def setup(Rpin, Gpin, Bpin):
 	
