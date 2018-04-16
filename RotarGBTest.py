@@ -20,9 +20,8 @@ flag = 0
 Last_RoB_Status = 0
 Current_RoB_Status = 0
 
-def rgb2hex(r,g,b):
-    hex = "#{:02x}{:02x}{:02x}".format(r,g,b)
-    return hex
+def rgb2hex(rgb):
+	return '%02x%02x%02x' % rgb
 
 def setup(Rpin, Gpin, Bpin):
 	
