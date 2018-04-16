@@ -102,7 +102,7 @@ def loop():
 		if tmp != globalCounter:
 			print 'globalCounter = %d' % globalCounter
 			tmp = globalCounter
-			print(r, g, b)
+			print(r_val, g_val, b_val)
 			setColor(rgb2hex(r_val,g_val,b_val))
 
 def off():
