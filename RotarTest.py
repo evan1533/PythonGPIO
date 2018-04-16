@@ -2,9 +2,9 @@
 import RPi.GPIO as GPIO
 import time
 
-RoAPin = 15    # CLK Pin
+RoAPin = 13    # CLK Pin
 RoBPin = 22    # DT Pin
-BtnPin = 19    # Button Pin
+BtnPin = 15    # Button Pin
 
 globalCounter = 0
 
