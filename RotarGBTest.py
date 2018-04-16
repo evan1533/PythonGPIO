@@ -73,7 +73,7 @@ def rotaryDeal():
 				r_val = (r_val + rgb_x) % 256;
 			if(write_color[1]):
 				print("Editing Green")
-				g_val = (g_val + rgb_x) % 256;;
+				g_val = (g_val + rgb_x) % 256;
 			if(write_color[2]):
 				print("Editing Blue")
 				b_val = (b_val + rgb_x) % 256;
