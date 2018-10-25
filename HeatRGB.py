@@ -2,16 +2,20 @@
 import RPi.GPIO as GPIO
 import time
 
-colors = [0xFF0000, 0x00FF00, 0x0000FF, 0xFFFF00, 0xFF00FF, 0x00FFFF]
-R = 15                                                                                                                                  
-G = 16
-B = 18
+DO = 11
+GPIO.setmode(GPIO.BCM)
+
+R = 22                                                                                                                                  
+G = 23
+B = 24
 max_green = 200;
 def setup(Rpin, Gpin, Bpin):
 	global pins
 	global p_R, p_G, p_B
 	pins = {'pin_R': Rpin, 'pin_G': Gpin, 'pin_B': Bpin}
-	GPIO.setmode(GPIO.BOARD)       # Numbers GPIOs by physical location
+	ADC.setup(0x48)
+	GPIO.setup(DO, GPIO.IN)
+	#GPIO.setmode(GPIO.BOARD)       # Numbers GPIOs by physical location
 	for i in pins:
 		GPIO.setup(pins[i], GPIO.OUT)   # Set pins' mode is output
 		GPIO.output(pins[i], GPIO.HIGH) # Set pins to high(+3.3V) to off led
@@ -70,18 +74,15 @@ def loop():
 	#Middle Temperature is 55
 	temp = 55
 	while True:
-		while temp > 0:
-			temp -= 1
-			color = colorFromTemp(temp)
-			setColor(color)
-			print(hex(color))
-			time.sleep(0.2)
-		while temp < 110:
-			temp += 1
-			color = colorFromTemp(temp)
-			setColor(color)
-			print(hex(color))
-			time.sleep(0.2)
+		analogVal = ADC.read(0)
+		Vr = 5 * float(analogVal) / 255
+		Rt = 10000 * Vr / (5 - Vr)
+		temp = 1/(((math.log(Rt / 10000)) / 3950) + (1 / (273.15+25)))
+		temp = ((temp - 273.15) * (9/5)) + 32
+		print('temperature = ', temp, 'F')
+		color = colorFromTemp(temp);
+		setColor(color)
+		time.sleep(0.2)
 
 def destroy():
 	p_R.stop()
