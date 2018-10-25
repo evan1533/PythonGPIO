@@ -69,18 +69,19 @@ def loop():
 	hit_zero = False
 	#Middle Temperature is 55
 	temp = 55
-	while temp > 0:
-		temp -= 1
-		color = colorFromTemp(temp)
-		setColor(color)
-		print(hex(color))
-		time.sleep(0.1)
-	while temp < 110:
-		temp += 1
-		color = colorFromTemp(temp)
-		setColor(color)
-		print(hex(color))
-		time.sleep(0.1)
+	while True:
+		while temp > 0:
+			temp -= 1
+			color = colorFromTemp(temp)
+			setColor(color)
+			print(hex(color))
+			time.sleep(0.5)
+		while temp < 110:
+			temp += 1
+			color = colorFromTemp(temp)
+			setColor(color)
+			print(hex(color))
+			time.sleep(0.5)
 
 def destroy():
 	p_R.stop()
