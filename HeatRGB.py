@@ -67,15 +67,19 @@ def colorFromTemp(temp):
 
 def loop():
 	hit_zero = False
+	#Middle Temperature is 55
 	temp = 55
 	while temp > 0:
 		temp -= 1
 		color = colorFromTemp(temp)
+		setColor(color)
 		print(hex(color))
 		time.sleep(0.1)
 	while temp < 110:
 		temp += 1
-		#Middle Temperature is 55
+		color = colorFromTemp(temp)
+		setColor(color)
+		print(hex(color))
 		time.sleep(0.1)
 
 def destroy():
