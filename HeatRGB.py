@@ -62,6 +62,7 @@ def colorFromTemp(temp):
 		g = 0 + int( (temp-27)*7.14285 )
 		b = 255
 	col = (r << 16) + (g << 8) + b
+	print( r, g, b, " -> ", hex(col))
 	return col
 
 def loop():
