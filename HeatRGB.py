@@ -59,7 +59,7 @@ def colorFromTemp(temp):
 		b = 255
 	elif temp >= 0:
 		r = 0
-		g = 0 + int( (temp-27)*7.14285 )
+		g = 0 + int( (temp)*7.14285 )
 		b = 255
 	col = (r << 16) + (g << 8) + b
 	print(temp, r, g, b, " -> ", hex(col))
