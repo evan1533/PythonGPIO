@@ -75,13 +75,13 @@ def loop():
 			color = colorFromTemp(temp)
 			setColor(color)
 			print(hex(color))
-			time.sleep(0.5)
+			time.sleep(0.2)
 		while temp < 110:
 			temp += 1
 			color = colorFromTemp(temp)
 			setColor(color)
 			print(hex(color))
-			time.sleep(0.5)
+			time.sleep(0.2)
 
 def destroy():
 	p_R.stop()
