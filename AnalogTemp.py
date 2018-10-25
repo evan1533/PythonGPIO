@@ -5,7 +5,7 @@ import RPi.GPIO as GPIO
 import time
 import math
 
-DO = 17
+DO = 11
 GPIO.setmode(GPIO.BCM)
 
 def setup():
