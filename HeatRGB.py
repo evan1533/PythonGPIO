@@ -6,7 +6,7 @@ colors = [0xFF0000, 0x00FF00, 0x0000FF, 0xFFFF00, 0xFF00FF, 0x00FFFF]
 R = 15                                                                                                                                  
 G = 16
 B = 18
-
+max_green = 200;
 def setup(Rpin, Gpin, Bpin):
 	global pins
 	global p_R, p_G, p_B
@@ -44,11 +44,38 @@ def setColor(col):   # For example : col = 0x112233
 	p_G.ChangeDutyCycle(100-G_val)
 	p_B.ChangeDutyCycle(100-B_val)
 
+def colorFromTemp(temp):
+	if temp >=82:
+		r = 255
+		g = 200 - int((temp-82)*7.14285)
+		b = 0
+	elif temp >= 55:
+		r = 255
+		g = 200
+		b = 255 - int( (temp-55)*7.407407)
+	elif temp >= 27:
+		r = 0 + int( (temp-27)*7.14285 )
+		g = 200
+		b = 255
+	elif temp >= 0:
+		r = 0
+		g = 0 + int( (temp-27)*7.14285 )
+		b = 255
+	col = (r << 16) + (g << 8) + b
+	return col
+
 def loop():
-	while True:
-		for col in colors:
-			setColor(col)
-			time.sleep(1)
+	hit_zero = False
+	temp = 55
+	while temp > 0:
+		temp -= 1
+		color = colorFromTemp(temp)
+		print(hex(color))
+		time.sleep(1)
+	while temp < 110:
+		temp += 1
+		#Middle Temperature is 55
+		time.sleep(1)
 
 def destroy():
 	p_R.stop()
