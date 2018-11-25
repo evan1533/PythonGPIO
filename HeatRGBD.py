@@ -4,6 +4,7 @@ import RPi.GPIO as GPIO
 import time
 import math
 import DigitalTemp
+import LCD1602
 
 DO = 11
 GPIO.setmode(GPIO.BCM)
@@ -31,6 +32,12 @@ def setup(Rpin, Gpin, Bpin):
 	p_R.start(100)      # Initial duty Cycle = 0(leds off)
 	p_G.start(100)
 	p_B.start(100)
+	
+	#Setup the LCD screen
+	LCD1602.init(0x27, 1)	# init(slave address, background light)
+	LCD1602.write(0, 0, 'Greetings!!')
+	LCD1602.write(1, 1, 'from SunFounder')
+	time.sleep(2)
 
 def map(x, in_min, in_max, out_min, out_max):
 	return (x - in_min) * (out_max - out_min) / (in_max - in_min) + out_min
@@ -77,6 +84,11 @@ def loop():
 	hit_zero = False
 	#Middle Temperature is 55
 	temp = 55
+	
+	space = '                '
+	greetings = 'Thank you for buying SunFounder Sensor Kit for Raspberry! ^_^'
+	greetings = space + greetings
+	
 	while True:
                 temp = DigitalTemp.read()
 		temp = (temp * (9/5)) + 32
@@ -84,6 +96,13 @@ def loop():
 		color = colorFromTemp(temp);
 		setColor(color)
 		time.sleep(0.2)
+		
+		tmp = greetings
+		for i in range(0, len(greetings)):
+			LCD1602.write(0, 0, tmp)
+			tmp = tmp[1:]
+			time.sleep(0.8)
+			LCD1602.clear()
 
 def destroy():
 	p_R.stop()
@@ -91,6 +110,7 @@ def destroy():
 	p_B.stop()
 	off()
 	GPIO.cleanup()
+	pass
 
 if __name__ == "__main__":
 	try:
