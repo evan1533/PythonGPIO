@@ -37,7 +37,6 @@ def setup(Rpin, Gpin, Bpin):
 	LCD1602.init(0x27, 1)	# init(slave address, background light)
 	LCD1602.write(0, 0, 'Greetings!!')
 	LCD1602.write(1, 1, 'from SunFounder')
-	time.sleep(2)
 
 def map(x, in_min, in_max, out_min, out_max):
 	return (x - in_min) * (out_max - out_min) / (in_max - in_min) + out_min
@@ -85,24 +84,14 @@ def loop():
 	#Middle Temperature is 55
 	temp = 55
 	
-	space = '                '
-	greetings = 'Thank you for buying SunFounder Sensor Kit for Raspberry! ^_^'
-	greetings = space + greetings
-	
 	while True:
                 temp = DigitalTemp.read()
 		temp = (temp * (9/5)) + 32
-		print('temperature = ', temp, 'F')
+		mess = "Temperature: " + str(temp) + "F"
 		color = colorFromTemp(temp);
 		setColor(color)
+		LCD1602.write(0, 0, mess)
 		time.sleep(0.2)
-		
-		tmp = greetings
-		for i in range(0, len(greetings)):
-			LCD1602.write(0, 0, tmp)
-			tmp = tmp[1:]
-			time.sleep(0.8)
-			LCD1602.clear()
 
 def destroy():
 	p_R.stop()
