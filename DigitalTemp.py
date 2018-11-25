@@ -21,9 +21,7 @@ def read():
 	text = tfile.read()
 	tfile.close()
 	secondline = text.split("\n")[1]
-	print(secondline)
 	temperaturedata = secondline.split(" ")[9]
-	print(temperaturedata)
 	temperature = float(temperaturedata[2:])
 	temperature = temperature / 1000
 	return temperature
