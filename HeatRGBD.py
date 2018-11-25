@@ -82,13 +82,16 @@ def loop():
 	hit_zero = False
 	#Middle Temperature is 55
 	temp = 55
+	store = -1
 	
 	while True:
                 temp = DigitalTemp.read()
 		temp = (temp * (9/5)) + 32
 		mess = "Temp: " + str(temp) + "F"
-		color = colorFromTemp(temp);
-		setColor(color)
+		if temp != store:
+			color = colorFromTemp(temp);
+			setColor(color)
+			store = temp
 		LCD1602.write(0, 0, mess)
 		time.sleep(0.2)
 
