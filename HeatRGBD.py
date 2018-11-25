@@ -3,6 +3,7 @@ import PCF8591 as ADC
 import RPi.GPIO as GPIO
 import time
 import math
+import DigitalTemp
 
 DO = 11
 GPIO.setmode(GPIO.BCM)
@@ -15,8 +16,9 @@ def setup(Rpin, Gpin, Bpin):
 	global pins
 	global p_R, p_G, p_B
 	pins = {'pin_R': Rpin, 'pin_G': Gpin, 'pin_B': Bpin}
-	ADC.setup(0x48)
-	GPIO.setup(DO, GPIO.IN)
+	
+        DigitalTemp.setup()
+	#GPIO.setup(DO, GPIO.IN)
 	#GPIO.setmode(GPIO.BOARD)       # Numbers GPIOs by physical location
 	for i in pins:
 		GPIO.setup(pins[i], GPIO.OUT)   # Set pins' mode is output
@@ -76,11 +78,8 @@ def loop():
 	#Middle Temperature is 55
 	temp = 55
 	while True:
-		analogVal = ADC.read(0)
-		Vr = 5 * float(analogVal) / 255
-		Rt = 10000 * Vr / (5 - Vr)
-		temp = 1/(((math.log(Rt / 10000)) / 3950) + (1 / (273.15+25)))
-		temp = ((temp - 273.15) * (9/5)) + 32
+                temp = DigitalTemp.read()
+		temp = (temp * (9/5)) + 32
 		print('temperature = ', temp, 'F')
 		color = colorFromTemp(temp);
 		setColor(color)
