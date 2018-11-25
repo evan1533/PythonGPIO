@@ -35,8 +35,7 @@ def setup(Rpin, Gpin, Bpin):
 	
 	#Setup the LCD screen
 	LCD1602.init(0x27, 1)	# init(slave address, background light)
-	LCD1602.write(0, 0, 'Greetings!!')
-	LCD1602.write(1, 1, 'from SunFounder')
+	
 
 def map(x, in_min, in_max, out_min, out_max):
 	return (x - in_min) * (out_max - out_min) / (in_max - in_min) + out_min
@@ -87,7 +86,7 @@ def loop():
 	while True:
                 temp = DigitalTemp.read()
 		temp = (temp * (9/5)) + 32
-		mess = "Temperature: " + str(temp) + "F"
+		mess = "Temp: " + str(temp) + "F"
 		color = colorFromTemp(temp);
 		setColor(color)
 		LCD1602.write(0, 0, mess)
